@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: flex;
+    flex-direction: column;
+
+    /* align-items: stretch; */
+}
+
+header {
+    background-color: black;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: white;
+    /* text-align: center; */
+}
+
+#border {
+    background-color: red;
+    height: 100%;
+    
+}
+
+/* #container {
+    background-color: darkgray;
+} */
