@@ -2,11 +2,13 @@
     margin: 0;
     padding: 0;
 }
+html, body {
+    height: 100%;
+    width: 100%;
+}
 body {
     display: flex;
     flex-direction: column;
-
-    /* align-items: stretch; */
 }
 
 header {
@@ -19,15 +21,34 @@ header {
 
 h1 {
     color: white;
-    /* text-align: center; */
 }
 
 #border {
     background-color: red;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 
-/* #container {
+#container {
     background-color: darkgray;
-} */
+    height: 80%;
+    width: 90%;
+    margin: 100px 100px;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-rows: 1fr 1fr;
+    /* grid-template-columns: repeat(2, 1fr); */
+}
+
+.etch {
+    background-color: green;
+    border: 1px solid black;
+
+}
+
+.hover {
+    background-color: black;
+}
