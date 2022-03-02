@@ -14,8 +14,9 @@ body {
 header {
     background-color: black;
     height: 50px;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -32,6 +33,16 @@ h1 {
     
 }
 
+#clear {
+    font-size: large;
+    font-weight: bold;
+    /* margin: 20px 20px; */
+    margin: 0 2% 0 35%;
+    padding: 3px 10px;
+    /* align-self:flex-end; */
+    /* justify-self: flex-end; */
+}
+
 #container {
     background-color: darkgray;
     height: 80%;
@@ -44,11 +55,11 @@ h1 {
 }
 
 .etch {
-    background-color: green;
+    background-color: darkgrey;
     border: 1px solid black;
 
 }
 
 .hover {
     background-color: black;
-}
+} 
