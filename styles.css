@@ -33,7 +33,7 @@ h1 {
     
 }
 
-#clear {
+#reset {
     font-size: large;
     font-weight: bold;
     /* margin: 20px 20px; */
@@ -45,8 +45,8 @@ h1 {
 
 #container {
     background-color: darkgray;
-    height: 80%;
-    width: 90%;
+    height: 1000px;
+    width: 1000px;
     margin: 100px 100px;
     display: grid;
     /* grid-template-columns: 1fr 1fr; */
@@ -54,12 +54,12 @@ h1 {
     /* grid-template-columns: repeat(2, 1fr); */
 }
 
-.etch {
+.cell {
     background-color: darkgrey;
     border: 1px solid black;
 
 }
 
-.hover {
+.etch {
     background-color: black;
 } 
