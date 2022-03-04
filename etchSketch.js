@@ -1,16 +1,37 @@
-function listener(colorState = false) {
+function listener(colorStyle) {
     const grid = document.querySelectorAll('.cell');    // NodeList of .cell elements
     // loop through each .cell elements and assign mouseover eventListener
     grid.forEach(cell => cell.addEventListener('mouseover', (e) => {    // on event of event
-        if(colorState) {
-            cell.style.backgroundColor = makeRainbow();
-        } else {
-            cell.style.backgroundColor = 'black'                        // add background color
-        }
+        color = makeRainbow(colorStyle);            // get color to assign to the cell
+        cell.style.backgroundColor = color;         // assign background color to cell
+        cell.setAttribute('data-color', color);     // save assigned color as data attribute -- style.backgroundColor converts hsl to rgb
+        console.log(cell.getAttribute('data-color'))  
         
         console.log(cell);
     }));
 };
+
+function randomizeRGB() {
+    // inclusive for 0 and 255?
+    return Math.floor(Math.random() * 256) // return random number between 0 - 255 for RGB value
+}
+
+function randomizeHSL() {
+    return Math.floor(Math.random() * 359) // return random number between 0 - 359 for HSL value
+}
+
+function makeRainbow(colorScheme) {
+    // let color;
+    switch (colorScheme) {
+        // case 'rgb':
+        //     return `rgb(${randomizeRGB()}, ${randomizeRGB()}, ${randomizeRGB()})`;
+        case 'hsl':
+            return `hsl(${randomizeHSL()}, 100%, 50%)`
+            // return 'green';
+        default:
+            return 'black';
+    }
+}
 
 // function that checks the color of the div.
 // if it already has a background defined, then 
@@ -20,7 +41,7 @@ function checkColor() {
 }
 
 // function which creates the grid based on input size to define number of cells per side
-function makeGrid(size = 16, color = false) {
+function makeGrid(size = 16, color) {
     const numCells = size ** 2;  // size of grid -- number of cells in the grid
     const container = document.querySelector('#container'); // select element with id=container
     for(let i=0; i<numCells; i++) {
@@ -53,15 +74,7 @@ function clearGrid(colorState = false) {
     makeGrid(newSize, colorState);
 }
 
-function randomize() {
-    // inclusive for 0 and 255?
-    return Math.floor(Math.random() * 256)
-}
 
-function makeRainbow() {
-    const color = `rgb(${randomize()}, ${randomize()}, ${randomize()})`;
-    return color;
-}
 
 // Trigger creation of grid when DOM is loaded
 window.addEventListener('DOMContentLoaded', (e) => {makeGrid()});
@@ -73,8 +86,13 @@ reset.addEventListener('click', (e) => {clearGrid(rgb)} );
 let rgb = false;
 const rainbow = document.querySelector('#rainbow');
 rainbow.addEventListener('click', (e) => {
-    rgb ? rgb = false : rgb = true;
-    listener(rgb);
+    if(!rgb) {
+        listener('hsl');
+        rgb = true;
+    } else {
+        listener();
+        rgb = false;
+    }
     console.log(rgb);
 });
 
