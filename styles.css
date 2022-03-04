@@ -33,14 +33,19 @@ h1 {
     
 }
 
-#reset {
+button {
     font-size: large;
     font-weight: bold;
-    /* margin: 20px 20px; */
-    margin: 0 2% 0 35%;
+}
+
+#reset {
+    margin: 0 2% 0 25%;
+    padding: 3px 15px;
+}
+
+#rainbow {
+    margin-right: 2%;
     padding: 3px 10px;
-    /* align-self:flex-end; */
-    /* justify-self: flex-end; */
 }
 
 #container {

@@ -1,19 +1,20 @@
-
-// const base = 16; // number of cells per side
-
-
-
-
-// create numCells of child divs and append to container
-// give each new div class 'etch'
-// add a mouseover event listener to each new div and assign another class when event occurs
+// function which creates the grid based on input size to define number of cells per side
 function makeGrid(size = 16) {
     const numCells = size ** 2;  // size of grid -- number of cells in the grid
     const container = document.querySelector('#container'); // select element with id=container
     for(let i=0; i<numCells; i++) {
         const cell = container.appendChild(document.createElement("div")); // append child div to container element, appendChild reference saved in variable child
         cell.className = 'cell'; // assign class name 'etch' to child reference element
-        cell.addEventListener('mouseover', (e) => e.target.classList.add('etch'));
+        let color;
+        rgb ? color = makeRainbiow() : color = "black";
+        // if(rgb) {
+        //     // change background color to rainbow
+        //     color = makeRainbow();
+        // } else {
+        //     // change background color to black
+        //     color = "black";
+        // }
+        cell.addEventListener('mouseover', (e) => {cell.style.backgroundColor = color});
     
         // container.appendChild(document.createElement("div")).className = 'etch'; // one liner
     }
@@ -22,16 +23,8 @@ function makeGrid(size = 16) {
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`; // change CSS grid property inside container to base number of rows.
 }
 
+// function to clear grid and prompt for new size
 function clearGrid() {
-    // for clearing the colored parts of the grid ONLY
-    // const grid = document.querySelectorAll('.etch'); // returns a NodeList, not an array. forEach is defined to work on NodeList.
-    // grid.forEach(cell => {
-    //     cell.classList.remove('etch');  // remove class .etch from element
-    // });
-    // note tht getElementsByClassName and querySelectorAll return two different objects
-    // getElementsByClassName returns an array
-    // querySelectorAll returns a NodeList which has a set of methods which operate on it
-
     // remove all divs from the grid
     const grid = document.getElementsByClassName('cell');
     while(grid[0]) {
@@ -47,16 +40,31 @@ function clearGrid() {
         newSize = parseInt(window.prompt("Maximum size is 100"));
     }
     makeGrid(newSize);
+}
 
+function randomize() {
+    // inclusive for 0 and 255?
+    return Math.floor(Math.random() * 256)
+}
+
+function makeRainbow() {
+    const color = `rgb(${randomize()}, ${randomize()}, ${randomize()})`;
+    return color;
 }
 
 makeGrid();
 
 const reset = document.querySelector('#reset');
 reset.addEventListener('click', (e) => {clearGrid()} );
-// reset.addEventListener('click', (e) => {
-//     const grid = document.querySelectorAll('.hover');
-//     grid.forEach(cell => {
-//         cell.classList.remove('hover');
-//     });
-// });
+
+let rbg = false;
+const rainbow = document.querySelector('#rainbow');
+rainbow.addEventListener('click', (e) => {
+    if(rbg) {
+        rbg = false;
+    } else {
+        rbg = true;
+    }
+    console.log(rbg);
+});
+
